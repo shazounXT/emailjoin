@@ -1,0 +1,118 @@
+/* =================== NỀN VÀ OVERLAY =================== */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: url('images/bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  /* Không dùng flex + height:100vh để cho phép cuộn */
+}
+
+/* Overlay mờ phủ toàn bộ trang */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7); /* nền đen mờ */
+  z-index: 0;
+}
+
+/* =================== KHUNG NỘI DUNG =================== */
+.page {
+  position: relative;
+  z-index: 1;                       /* nổi trên overlay */
+  background: rgba(20, 20, 20, 0.9); /* nền tối bán trong suốt */
+  color: #00ff00;                   /* chữ xanh lá */
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, .5);
+  width: 420px;
+  max-width: 90%;
+  margin: 48px auto;                /* canh giữa ngang, có khoảng trên/dưới để cuộn */
+}
+
+/* =================== LOGO =================== */
+.logo-box {
+  min-height: 80px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;   /* logo nằm giữa */
+  align-items: center;
+}
+.logo {
+  max-height: 70px;
+  width: auto;
+}
+
+/* =================== FORM =================== */
+.form .row {
+  display: flex;
+  flex-direction: column;   /* xếp dọc */
+  align-items: flex-start;
+  margin: 12px 0;
+}
+.form label {
+  margin-bottom: 4px;
+  font-weight: bold;
+  color: #32cd32;           /* xanh lá đậm hơn cho nhãn */
+}
+
+/* =================== INPUT =================== */
+input[type=text], input[type=email], input[type=date], select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #32cd32;
+  border-radius: 6px;
+  background: #111;          /* nền input tối */
+  color: #00ff00;            /* chữ xanh lá */
+}
+input::placeholder {
+  color: #228b22;            /* placeholder xanh lá tối hơn */
+}
+
+/* =================== NÚT SUBMIT =================== */
+input[type=submit] {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(#32cd32, #006400);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0,255,0,.4); /* hiệu ứng nổi */
+  transition: all .2s ease;
+}
+input[type=submit]:hover {
+  background: linear-gradient(#3ee63e, #007a00);
+  box-shadow: 0 8px 16px rgba(0,255,0,.5);
+}
+input[type=submit]:active {
+  transform: translateY(2px);
+  box-shadow: 0 4px 8px rgba(0,255,0,.3) inset;
+}
+
+/* =================== NHÓM LỰA CHỌN =================== */
+/* Xếp dọc */
+.group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+/* Xếp ngang (inline), wrap khi chật */
+.group-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+.group-inline > label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  color: #3ee63e;
+}
